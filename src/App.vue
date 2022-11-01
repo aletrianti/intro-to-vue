@@ -1,28 +1,39 @@
 <template>
-  <div id="app">
-    <img alt="Vue logo" src="./assets/logo.png">
-    <HelloWorld msg="Welcome to Your Vue.js App"/>
-  </div>
+    <div id="app">
+        <h1 class="app-title">
+            {{ title }}
+        </h1>
+
+        <child-component :text="text" subText="General Kenobi"></child-component>
+    </div>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
+import ChildComponent from './components/ChildComponent.vue';
 
 export default {
-  name: 'App',
-  components: {
-    HelloWorld
-  }
-}
+    name: 'App',
+    components: {
+      'child-component': ChildComponent,
+    },
+    data() {
+        return {
+            title: 'This is a title'
+        };
+    },
+    computed: {
+        text() {
+            return 'Hello there';
+        }
+    },
+    methods: {},
+};
 </script>
 
-<style>
+<style lang="scss" scoped>
+@import './styles/variables';
+
 #app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
+    background-color: $white;
 }
 </style>
