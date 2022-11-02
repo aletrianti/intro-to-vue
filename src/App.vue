@@ -4,7 +4,16 @@
             {{ title }}
         </h1>
 
-        <child-component :text="text" subText="General Kenobi"></child-component>
+        <child-component 
+            :title="title"
+            :text="text" 
+            subText="General Kenobi"
+            @myFunctionOnClick="changeTitle"
+        >
+            <span slot="extra-content">
+                This will be shown in my child component
+            </span>
+        </child-component>
     </div>
 </template>
 
@@ -26,7 +35,11 @@ export default {
             return 'Hello there';
         }
     },
-    methods: {},
+    methods: {
+        changeTitle(value) {
+            this.title = value;
+        }
+    },
 };
 </script>
 
